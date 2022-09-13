@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Zimperium
-        uses: zimperium/zscanmarketplace@v0.3
+        uses: zimperium/zscanmarketplace@master
         timeout-minutes: 60
         with:
         # REPLACE: Zimperium Client Environment Name
