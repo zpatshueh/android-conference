@@ -38,3 +38,32 @@ jobs:
         with:
           name: app
           path: app/build/outputs/apk/debug/**.apk
+          
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Zimperium
+        uses: zimperium/zscanmarketplace@v0.3
+        timeout-minutes: 60
+        with:
+        # REPLACE: Zimperium Client Environment Name
+          client_env: mtddev
+        # REPLACE: Zimperium Client ID
+          client_id: dF_o4EL5TGatrZDNHKGZHw
+        # REPLACE: Zimperium Client Secret
+          client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET }}
+        # REPLACE: The path to an .ipa or .apk
+          app_file: app-debug.apk
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: Zimperium.sarif
+
+      - name: Move Sarif
+        uses: actions/upload-artifact@v3
+        with:
+          name: sarif
+          path: Zimperium.sarif
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+
