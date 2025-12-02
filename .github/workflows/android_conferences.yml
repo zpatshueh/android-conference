@@ -58,12 +58,12 @@ jobs:
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: Zimperium.sarif
+          sarif_file: app-debug_zscan.sarif
 
       - name: Move Sarif
         uses: actions/upload-artifact@v4
         with:
           name: sarif
-          path: Zimperium.sarif
+          path: app-debug_zscan.sarif
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
           
