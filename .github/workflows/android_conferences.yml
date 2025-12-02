@@ -61,7 +61,7 @@ jobs:
           sarif_file: Zimperium.sarif
 
       - name: Move Sarif
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sarif
           path: Zimperium.sarif
